@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     POSTGRES_USER: str = 'hello'
     POSTGRES_PASSWORD: str = 'hello'
-    POSTGRES_SERVER: str = 'localhost'
+    POSTGRES_SERVER: str = os.getenv("POSTGRES_SERVER", 'localhost')
     POSTGRES_PORT: int = 5432
     POSTGRES_DB: str = "gh"
     DATABASE_URL: str = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}:{POSTGRES_PORT}/{POSTGRES_DB}"
